@@ -12,16 +12,16 @@ class Save_DB(Lead):
     def sav_user(self, user):
         user.save()
 
-    def sav_user(self, name):
+    def sav_name(self, name):
         name.save()
 
-    def sav_user(self, date):
+    def sav_date(self, date):
         date.save()
 
-    def sav_user(self, first_call_time):
+    def sav_time(self, first_call_time):
         first_call_time.save()
 
-    def sav_user(self, total_talk_time):
+    def sav_talk_time(self, total_talk_time):
         total_talk_time.save()
 
     
