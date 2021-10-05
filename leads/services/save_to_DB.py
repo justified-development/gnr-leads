@@ -1,7 +1,8 @@
 from HAScraper import Lead
+from HAScraper import HAScraper
 
 
-class Save_DB(Lead):
+class Save_DB:
     def __init__(self, user, name, date, first_call_time, total_talk_time):
         self.user = user
         self.name = name
@@ -24,4 +25,4 @@ class Save_DB(Lead):
     def sav_talk_time(self, total_talk_time):
         total_talk_time.save()
 
-    
+Save_DB(HAScraper.leads)
