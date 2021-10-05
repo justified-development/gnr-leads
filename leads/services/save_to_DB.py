@@ -25,4 +25,5 @@ class Save_DB:
     def sav_talk_time(self, total_talk_time):
         total_talk_time.save()
 
-Save_DB(HAScraper.leads)
+for i in HAScraper.leads:
+    Save_DB(i)
