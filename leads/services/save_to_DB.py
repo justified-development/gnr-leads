@@ -1,4 +1,4 @@
-from HAScraper import Lead
+from HAScraper import ScrapedLead
 from HAScraper import HAScraper
 
 
