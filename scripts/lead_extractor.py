@@ -1,5 +1,5 @@
 from leads.services.HAScraper import HAScraper, ScrapedLead
-from leads.services.save_to_DB import LeadRepository
+from leads.services.lead_repository import LeadRepository
 
 def run(*args):
   date = '10/2/2021'
@@ -7,3 +7,4 @@ def run(*args):
   print(leads)
   # TODO: nothing to do here, just note that this is how we will use your new class
   LeadRepository.save_leads(leads)
+  
