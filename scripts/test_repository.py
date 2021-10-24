@@ -9,8 +9,8 @@ def run(*args):
 
     LeadRepository.save_leads(scraped_leads)
 
-    # saved_leads = Lead.objects.all()
-    # assert 2 == len(saved_leads)
+    saved_leads = Lead.objects.all()
+    assert 2 == len(saved_leads)
 
     # Lead.objects.all().delete
     
