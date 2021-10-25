@@ -6,9 +6,16 @@
 
 <table>
 
-    <tr>
 
-        {{content}}
+    <tr>
+        {% for record in content %}
+        <td style="vertical-align: top;">
+                {{ record.user_name }}
+                        
+                
+        </td>
+        {% endfor %}
+        
 
     </tr>
 
