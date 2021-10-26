@@ -8,7 +8,7 @@ class Lead(models.Model):
     created_date = models.DateTimeField()
 
     def __str__(self):
-        return self.display_name
+        return f'{self.account_name}: {self.created_date} - {self.customer_name} - Time to First Call: {self.first_call_time}, Total Talk Time: {self.total_talk_time}'
 
 class Message(models.Model):
     title = models.CharField(max_length=500)
