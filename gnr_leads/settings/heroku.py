@@ -28,7 +28,7 @@ EMAIL_RECIPIENT = env('EMAIL_RECIPIENT')
 
 SCRAPER_LOGIN_URL = env('SCRAPER_LOGIN_URL')
 
-SCRAPER_LEADS_URL = env('SCRAPER_LOGIN_URL')
+SCRAPER_LEADS_URL = env('SCRAPER_LEADS_URL')
 
 # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
 DATABASES = {
