@@ -7,7 +7,7 @@ from leads.models import Message
 class EmailSender:
     @staticmethod
     def send_email(date):
-        leads = Lead.objects.filter(created_date = date)
+        leads = Lead.objects.filter(run_date = date)
         print(leads)
         sender = settings.EMAIL_HOST_USER
         receiver = settings.EMAIL_RECIPIENT

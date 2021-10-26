@@ -5,10 +5,11 @@ class Lead(models.Model):
     customer_name = models.CharField(max_length=100)
     first_call_time = models.CharField(max_length= 20)
     total_talk_time = models.CharField(max_length= 20)
+    run_date = models.DateField()
     created_date = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.account_name}: {self.created_date} - {self.customer_name} - Time to First Call: {self.first_call_time}, Total Talk Time: {self.total_talk_time}'
+        return f'{self.account_name}: {self.run_date} - {self.customer_name} - Time to First Call: {self.first_call_time}, Total Talk Time: {self.total_talk_time}'
 
 class Message(models.Model):
     title = models.CharField(max_length=500)
