@@ -24,6 +24,12 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
+EMAIL_RECIPIENT = env('EMAIL_RECIPIENT')
+
+SCRAPER_LOGIN_URL = env('SCRAPER_LOGIN_URL')
+
+SCRAPER_LEADS_URL = env('SCRAPER_LOGIN_URL')
+
 # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
 DATABASES = {
     # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found

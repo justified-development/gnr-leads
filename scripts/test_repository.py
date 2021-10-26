@@ -1,5 +1,5 @@
 from leads.services.lead_repository import LeadRepository 
-from leads.services.HAScraper import ScrapedLead
+from leads.services.scraper import ScrapedLead
 from leads.models import Lead
 
 def run(*args):

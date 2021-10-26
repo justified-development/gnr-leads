@@ -1,10 +1,13 @@
-from leads.services.HAScraper import HAScraper, ScrapedLead
+from leads.services.scraper import Scraper, ScrapedLead
 from leads.services.lead_repository import LeadRepository
+from datetime import datetime
+from leads.services.email_sender import EmailSender
 
 def run(*args):
-  date = '10/26/2021'
-  leads: list[ScrapedLead] = HAScraper.scrape(date)
+  today = datetime.today()
+  date = datetime.today().strftime('%m/%d/%Y')
+  leads: list[ScrapedLead] = Scraper.scrape(date)
   print(leads)
-  # TODO: nothing to do here, just note that this is how we will use your new class
   LeadRepository.save_leads(leads)
+  EmailSender.send_email(today)
   
