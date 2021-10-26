@@ -16,8 +16,14 @@ class Message(models.Model):
     prelude = models.CharField(max_length=500)
     active = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f'{self.title}'
+
 class Account(models.Model):
     account_name = models.CharField(max_length=30)
     user_name = models.CharField(max_length=30)
     password = models.CharField(max_length=50)
     active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.account_name}'
