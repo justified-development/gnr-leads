@@ -21,7 +21,7 @@ br {
 
 <body>
 <p>{{prelude}}</p>
-<h1>Leads For Today ({{today}})</h1>
+<h1>Leads For Today ({{today|date:"M d, Y"}})</h1>
 {% if leads|length > 0 %}
 <div>
     <table>
