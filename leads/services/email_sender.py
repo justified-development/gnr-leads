@@ -8,6 +8,7 @@ class EmailSender:
     @staticmethod
     def send_email(date):
         leads = Lead.objects.filter(created_date = date)
+        print(leads)
         sender = settings.EMAIL_HOST_USER
         receiver = settings.EMAIL_RECIPIENT
         recs = receiver.split(',') if ',' in receiver else [receiver]
