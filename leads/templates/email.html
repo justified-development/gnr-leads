@@ -6,35 +6,42 @@
 table th {
     text-align:left;
     background-color: cadetblue;
+    color: white;
 }
 table td {
     border: 1px solid #e3e3e3;
+}
+th, td {
+    padding: 5px;
+}
+br {
+    display: none;
 }
 </style>
 
 <body>
 <p>{{prelude}}</p>
-<h1>Leads For Today</h1>
+<h1>Leads For Today ({{today}})</h1>
 {% if leads|length > 0 %}
-<table>
-    <tr>
-        <th>Account &nbsp</th>
-        <th>Customer Name &nbsp</th>
-        <th>First Call Time &nbsp</th> 
-        <th>Total Talk Time &nbsp</th>
-        <th>Created Date &nbsp</th>   
-    </tr>    
-    {% for l in leads %}
-    <tr>       
-        <td>{{ l.account_name }}</td>
-        <td>{{ l.customer_name }}</td>
-        <td>{{ l.first_call_time }}</td>
-        <td>{{ l.total_talk_time }}</td>
-        <td>{{ l.created_date }}</td>
-        <br></br>
-    </tr>        
-    {% endfor %}
-</table>
+<div>
+    <table>
+        <tr>
+            <th>Account &nbsp</th>
+            <th>Customer Name &nbsp</th>
+            <th>First Call Time &nbsp</th> 
+            <th>Total Talk Time &nbsp</th>
+        </tr>    
+        {% for l in leads %}
+        <tr>       
+            <td>{{ l.account_name }}</td>
+            <td>{{ l.customer_name }}</td>
+            <td>{{ l.first_call_time }}</td>
+            <td>{{ l.total_talk_time }}</td>
+            <br></br>
+        </tr>        
+        {% endfor %}
+    </table>
+</div>
 {% else %}
 <h2>No Leads for Today</h2>
 {% endif %}

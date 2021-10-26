@@ -5,7 +5,7 @@ from leads.services.email_sender import EmailSender
 
 def run(*args):
   today = datetime.today()
-  date = datetime.today().strftime('%m/%d/%Y')
+  date = today.strftime('%m/%d/%Y')
   leads: list[ScrapedLead] = Scraper.scrape(date)
   print(leads)
   LeadRepository.save_leads(leads)

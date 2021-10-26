@@ -8,7 +8,7 @@ class EmailSender:
     @staticmethod
     def send_email(date):
         leads = Lead.objects.filter(run_date = date)
-        print(leads)
+        # print(leads)
         sender = settings.EMAIL_HOST_USER
         receiver = settings.EMAIL_RECIPIENT
         recs = receiver.split(',') if ',' in receiver else [receiver]
@@ -20,9 +20,9 @@ class EmailSender:
             print("Warning: multiple Message records. Just using the first.")
         message = messages[0]
 
-        rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude})
+        rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": date})
         print("Recipients: " + str(recs))
-        print("Content: " + rendered_content)
+        # print("Content: " + rendered_content)
 
         send_mail(
             message.title,
