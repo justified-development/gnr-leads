@@ -4,20 +4,34 @@
 
 <body>
 
-<table>
+<table style ="border:1px double black;">
 
-
-    <tr>
-        {% for record in content %}
-        <td style="vertical-align: top;">
-                {{ record.user_name }}
-                        
+           
+       
+        
+        
+        {% for r in content %}
+            <td height: 50px;vertical-align: bottom;}>
+             {{ r.user_name }} 
+             {{ r.display_name }}
+             {{ r.first_call_time }}
+             {{ r.total_talk_time }} 
+             {{ r.created_date }} </td>
+            
+            
+            
+            <th>User Name &nbsp</th>
+            <th>Display Name &nbsp</th>
+            <th>First Call Time &nbsp</th> 
+            <th>Total Talk Time &nbsp</th>
+            <th>Created Date &nbsp</th>   
+                      
                 
-        </td>
+        
         {% endfor %}
         
 
-    </tr>
+    
 
 
 </table>
