@@ -2,36 +2,43 @@
 <!DOCTYPE html>
 <html>
 
+<style>
+table th {
+    text-align:left;
+    background-color: cadetblue;
+}
+table td {
+    border: 1px solid #e3e3e3;
+}
+
+</style>
+
+<h1>Leads For Today</h1>
+
 <body>
 
-<table style ="border:1px double black;">
-
-           
-       
-        
-        
-        {% for r in content %}
-            <td height: 50px;vertical-align: bottom;}>
-             {{ r.user_name }} 
-             {{ r.display_name }}
-             {{ r.first_call_time }}
-             {{ r.total_talk_time }} 
-             {{ r.created_date }} </td>
-            
-            
-            
+<table>
+    <tr>
             <th>User Name &nbsp</th>
             <th>Display Name &nbsp</th>
             <th>First Call Time &nbsp</th> 
             <th>Total Talk Time &nbsp</th>
             <th>Created Date &nbsp</th>   
-                      
-                
+       
+    </tr>    
         
+        {% for r in content %}
+    <tr>       
+            <td>{{ r.user_name }}</td>
+            <td>{{ r.display_name }}</td>
+            <td>{{ r.first_call_time }}</td>
+            <td>{{ r.total_talk_time }}</td>
+            <td>{{ r.created_date }}</td>
+            <br></br>
+    </tr>        
         {% endfor %}
-        
-
     
+     
 
 
 </table>
