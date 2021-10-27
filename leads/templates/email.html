@@ -14,9 +14,6 @@ table td {
 th, td {
     padding: 5px;
 }
-br {
-    display: none;
-}
 </style>
 
 <body>
@@ -28,6 +25,7 @@ br {
         <tr>
             <th>Account &nbsp</th>
             <th>Customer Name &nbsp</th>
+            <th>Time Lead Came In</th>
             <th>First Call Time &nbsp</th> 
             <th>Total Talk Time &nbsp</th>
         </tr>    
@@ -35,9 +33,9 @@ br {
         <tr>       
             <td>{{ l.account_name }}</td>
             <td>{{ l.customer_name }}</td>
+            <td>{% if l.initial_lead_date_time %}{{ l.initial_lead_date_time|date:"g:i A (T) - M j" }}{% else %}N/A{% endif %}</td>
             <td>{{ l.first_call_time }}</td>
             <td>{{ l.total_talk_time }}</td>
-            <br></br>
         </tr>        
         {% endfor %}
     </table>
