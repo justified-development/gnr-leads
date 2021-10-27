@@ -41,7 +41,7 @@ class Message(models.Model):
 class Account(models.Model):
     account_name = models.CharField(max_length=30)
     user_name = models.CharField(max_length=30)
-    password = models.CharField(max_length=50)
+    account_pass = models.CharField(max_length=50)
     active = models.BooleanField(default=False)
 
     def __str__(self):
