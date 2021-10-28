@@ -25,17 +25,22 @@ th, td {
         <tr>
             <th>Account &nbsp</th>
             <th>Customer Name &nbsp</th>
-            <th>Time Lead Came In</th>
+            <th>Time Lead Came In (CT)</th>
             <th>First Call Time &nbsp</th> 
             <th>Total Talk Time &nbsp</th>
+            <th>Lead Cost</th>
         </tr>    
         {% for l in leads %}
         <tr>       
             <td>{{ l.account_name }}</td>
             <td>{{ l.customer_name }}</td>
-            <td>{% if l.initial_lead_date_time %}{{ l.initial_lead_date_time|date:"g:i A (T) - M j" }}{% else %}N/A{% endif %}</td>
+            <td>{% if l.initial_lead_date_time %}{{ l.initial_lead_date_time|date:"g:i A - M j" }}
+                {% elif l.won_job_date_time %}{{ l.won_job_date_time|date:"g:i A - M j" }} (Won Job Time)
+                {% else %}N/A
+                {% endif %}</td>
             <td>{{ l.first_call_time }}</td>
             <td>{{ l.total_talk_time }}</td>
+            <td>{% if l.job_fee %}${{ l.job_fee }}{% else %}N/A{% endif %}</td>
         </tr>        
         {% endfor %}
     </table>

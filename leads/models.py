@@ -9,6 +9,8 @@ class Lead(models.Model):
     total_talk_time = models.CharField(max_length= 20)
     call_date_time = models.DateTimeField(null=True)
     initial_lead_date_time = models.DateTimeField(null=True)
+    won_job_date_time = models.DateTimeField(null=True)
+    job_fee = models.CharField(max_length=10, null=True)
     run_date = models.DateField()
     created_date = models.DateTimeField()
 
