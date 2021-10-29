@@ -146,5 +146,3 @@ SCRAPER_LEADS_URL = ''
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 TIME_ZONE = 'America/Chicago'
-
-PASSWORD_HASHERS = []
