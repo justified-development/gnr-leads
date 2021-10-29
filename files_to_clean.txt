@@ -1,3 +1,0 @@
-base.py (settings)
-email_sender
-scraper
