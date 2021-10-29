@@ -18,13 +18,19 @@ class Lead(models.Model):
         return f'{self.account_name}: {self.run_date} - {self.customer_name} - Time to First Call: {self.first_call_time}, Total Talk Time: {self.total_talk_time}'
 
     @staticmethod
-    def time_string_as_sec(first_call_time):
-        split_call_time = first_call_time.strip().split(' ') if ' ' in first_call_time.strip() else [first_call_time.strip()]
-        if len(split_call_time) == 1:
-            return int(split_call_time[0].replace('s', ''))
-        else:
-            mins = int(split_call_time[0].replace('m', ''))
-            return int(split_call_time[1].replace('s', '')) + (mins * 60)
+    def time_string_as_sec(time_string):
+        split_time = time_string.strip().split(' ')
+        total_time = 0
+        for segment in split_time:
+            if 'd' in segment:
+                total_time = total_time + (int(segment.replace('d', '')) * 24 * 60 * 60)
+            elif 'h' in segment:
+                total_time = total_time + (int(segment.replace('h', '')) * 60 * 60)
+            elif 'm' in segment:
+                total_time = total_time + (int(segment.replace('m', '')) * 60)
+            elif 's' in segment:
+                total_time = total_time + int(segment.replace('s', ''))
+        return total_time
 
     @staticmethod
     def calculate_initial_lead_time(call_date_time, first_call_time):
