@@ -134,7 +134,7 @@ class Scraper:
           print(f'Extracting data for lead {name}')
           date = children[11].text
           lead_el.click()
-          time.sleep(2)
+          time.sleep(5)
           history_text = driver.find_element_by_xpath("//div[contains(@class, 'lead-tab') and contains(@class, 'history')]").get_attribute("innerText")
           initial_status_date_time = Scraper._get_status_date_time(driver, "Initial")
           won_job_status_date_time = Scraper._get_status_date_time(driver, "Won Job")
