@@ -145,9 +145,13 @@ class Scraper:
             total_talk_time = 'N/A'
           else:
             call_stats = driver.find_elements_by_xpath("//div[contains(@class, 'lead-tab') and contains(@class, 'history')]//div[@class='stat-data']")
-            first_call_time = call_stats[0].get_attribute("innerText")
-            total_talk_time = call_stats[2].get_attribute("innerText")
-            call_date_time = Scraper._get_call_date_time(driver)
+            if call_stats and len(call_stats) > 2:
+                first_call_time = call_stats[0].get_attribute("innerText")
+                total_talk_time = call_stats[2].get_attribute("innerText")
+                call_date_time = Scraper._get_call_date_time(driver)
+            else:
+                first_call_time = 'N/A'
+                total_talk_time = 'N/A'
           
           leads.append(ScrapedLead(
             account_name, 
