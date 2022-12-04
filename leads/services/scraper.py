@@ -41,7 +41,7 @@ class Scraper:
   LEADS = settings.SCRAPER_LEADS_URL
     
   @staticmethod
-  def scrape(date) -> list[ScrapedLead]:
+  def scrape(dates) -> list[ScrapedLead]:
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
@@ -74,7 +74,6 @@ class Scraper:
       driver.implicitly_wait(3)
       time.sleep(3)
 
-      dates = [date]
       print(f'On Active Leads page, getting leads for these dates: {dates}')
       old_date_found = False
 
