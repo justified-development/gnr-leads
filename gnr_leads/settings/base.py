@@ -146,3 +146,45 @@ SCRAPER_LEADS_URL = ''
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 TIME_ZONE = 'America/Chicago'
+
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    IS_PROD=(bool, False)
+)
+
+IS_PROD = env('IS_PROD')
+if IS_PROD:
+    # False if not in os.environ
+    DEBUG = env('DEBUG')
+
+    # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+    SECRET_KEY = env('SECRET_KEY')
+
+    ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+    EMAIL_RECIPIENT = env('EMAIL_RECIPIENT')
+
+    SCRAPER_LOGIN_URL = env('SCRAPER_LOGIN_URL')
+
+    SCRAPER_LEADS_URL = env('SCRAPER_LEADS_URL')
+
+    # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django_psdb_engine',
+            'NAME': env('DB_NAME'),
+            'HOST': 'us-east.connect.psdb.cloud',
+            'PORT': 3306,
+            'USER': env('DB_USER'),
+            'PASSWORD': env('DB_PASS'),
+            'OPTIONS': {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
+            # 'OPTIONS': {'ssl': {'ca': 'C:\\Users\\bwrig\\Desktop\\curl-ca-bundle.crt'}}
+        }
+    }
