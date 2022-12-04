@@ -180,7 +180,7 @@ if IS_PROD:
         'default': {
             'ENGINE': 'django_psdb_engine',
             'NAME': env('DB_NAME'),
-            'HOST': 'us-east.connect.psdb.cloud',
+            'HOST': 'aws.connect.psdb.cloud',
             'PORT': 3306,
             'USER': env('DB_USER'),
             'PASSWORD': env('DB_PASS'),
