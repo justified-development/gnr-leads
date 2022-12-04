@@ -21,12 +21,12 @@ class EmailSender:
             print("Warning: multiple Message records. Just using the first.")
         message = messages[0]
 
-        rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": date})
+        rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": dates[0]})
         print("Recipients: " + str(recs))
         # print("Content: " + rendered_content)
 
         send_mail(
-            message.title,
+            message.title + '(Last 4 Days)',
             '', 
             sender,
             recs,
