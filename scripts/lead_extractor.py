@@ -12,8 +12,8 @@ def run(*args):
   date_string3 = yesterday3.strftime('%-m/%-d/%Y')
   yesterday4 = datetime.today() - timedelta(days=4)
   date_string4 = yesterday4.strftime('%-m/%-d/%Y')
-  leads: list[ScrapedLead] = Scraper.scrape([date_string, date_string2, date_string3, date_string4])
-  print(leads)
-  LeadRepository.save_leads(leads)
-  EmailSender.send_email(yesterday)
+  # leads: list[ScrapedLead] = Scraper.scrape([date_string, date_string2, date_string3, date_string4])
+  # print(leads)
+  # LeadRepository.save_leads(leads)
+  EmailSender.send_email([yesterday, yesterday2, yesterday3, yesterday4])
   

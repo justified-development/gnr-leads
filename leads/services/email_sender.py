@@ -7,8 +7,8 @@ from leads.models import Message
 class EmailSender:
 
     @staticmethod
-    def send_email(date):
-        leads = Lead.objects.filter(run_date = date).order_by('account_name', 'initial_lead_date_time', 'won_job_date_time')
+    def send_email(dates):
+        leads = Lead.objects.filter(run_date__in=list(dates)).order_by('account_name', 'initial_lead_date_time', 'won_job_date_time')
         # print(leads)
         sender = settings.EMAIL_HOST_USER
         receiver = settings.EMAIL_RECIPIENT
