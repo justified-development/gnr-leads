@@ -175,8 +175,6 @@ if IS_PROD:
 
     SCRAPER_LEADS_URL = env('SCRAPER_LEADS_URL')
 
-    SENDGRID_API_KEY = env('SENDGRID_API_KEY')
-
     SKIP_SCRAPE = env('SKIP_SCRAPE')
 
     # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
