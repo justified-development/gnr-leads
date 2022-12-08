@@ -38,16 +38,11 @@ class EmailSender:
         # print('Mail has been sent') 
 
         sendgrid_api_key = settings.SENDGRID_API_KEY
-        # message = Mail(
-        #     from_email=sender,
-        #     to_emails='dev@justdev.us,bwright1337@live.com',
-        #     subject=message.title,
-        #     html_content=rendered_content)
         message = Mail(
-            from_email='from_email@example.com',
-            to_emails='to@example.com',
-            subject='Sending with Twilio SendGrid is Fun',
-            html_content='<strong>and easy to do anywhere, even with Python</strong>')
+            from_email=sender,
+            to_emails='dev@justdev.us,bwright1337@live.com',
+            subject=message.title,
+            html_content=rendered_content)
         try:
             sg = SendGridAPIClient(sendgrid_api_key)
             response = sg.send(message)
