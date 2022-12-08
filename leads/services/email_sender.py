@@ -4,8 +4,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from leads.models import Message
 
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+from mailersend import emails
 
 class EmailSender:
 
@@ -26,17 +25,41 @@ class EmailSender:
 
         rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": date})
 
-        sendgrid_api_key = settings.SENDGRID_API_KEY
-        message = Mail(
-            from_email=sender,
-            to_emails=recs,
-            subject=message.title,
-            html_content=rendered_content)
+
+        # assigning NewEmail() without params defaults to MAILERSEND_API_KEY env var
+        mailer = emails.NewEmail()
+
+        # define an empty dict to populate with mail values
+        mail_body = {}
+
+        mail_from = {
+            "name": "Dev",
+            "email": "dev@justdev.us",
+        }
+
+        recipients = [
+            {
+                "name": "Dev",
+                "email": "dev@justdev.us",
+            }
+        ]
+
+        reply_to = [
+            {
+                "name": "Dev",
+                "email": "dev@justdev.us",
+            }
+        ]
+
+        mailer.set_mail_from(mail_from, mail_body)
+        mailer.set_mail_to(recipients, mail_body)
+        mailer.set_subject(message.title, mail_body)
+        mailer.set_html_content(rendered_content, mail_body)
+        # mailer.set_plaintext_content(rendered_content, mail_body)
+        mailer.set_reply_to(reply_to, mail_body)
+
         try:
-            sg = SendGridAPIClient(sendgrid_api_key)
-            response = sg.send(message)
-            print(response.status_code)
-            print(response.body)
-            print(response.headers)
+            # using print() will also return status code and data
+            print(mailer.send(mail_body))
         except Exception as e:
             print(e)
