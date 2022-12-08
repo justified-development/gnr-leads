@@ -25,22 +25,11 @@ class EmailSender:
         message = messages[0]
 
         rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": date})
-        # print("Recipients: " + str(recs))
-        # # print("Content: " + rendered_content)
-
-        # send_mail(
-        #     message.title,
-        #     '', 
-        #     sender,
-        #     recs,
-        #     html_message=rendered_content,
-        # )
-        # print('Mail has been sent') 
 
         sendgrid_api_key = settings.SENDGRID_API_KEY
         message = Mail(
             from_email=sender,
-            to_emails='dev@justdev.us,bwright1337@live.com',
+            to_emails=recs,
             subject=message.title,
             html_content=rendered_content)
         try:
