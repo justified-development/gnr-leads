@@ -25,41 +25,15 @@ class EmailSender:
 
         rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": date})
 
+        print("Recipients: " + str(recs))
+        # print("Content: " + rendered_content)
 
-        # assigning NewEmail() without params defaults to MAILERSEND_API_KEY env var
-        mailer = emails.NewEmail()
-
-        # define an empty dict to populate with mail values
-        mail_body = {}
-
-        mail_from = {
-            "name": "Dev",
-            "email": "dev@justdev.us",
-        }
-
-        recipients = [
-            {
-                "name": "Dev",
-                "email": "dev@justdev.us",
-            }
-        ]
-
-        reply_to = [
-            {
-                "name": "Dev",
-                "email": "dev@justdev.us",
-            }
-        ]
-
-        mailer.set_mail_from(mail_from, mail_body)
-        mailer.set_mail_to(recipients, mail_body)
-        mailer.set_subject(message.title, mail_body)
-        mailer.set_html_content(rendered_content, mail_body)
-        # mailer.set_plaintext_content(rendered_content, mail_body)
-        mailer.set_reply_to(reply_to, mail_body)
-
-        try:
-            # using print() will also return status code and data
-            print(mailer.send(mail_body))
-        except Exception as e:
-            print(e)
+        send_mail(
+            message.title,
+            '', 
+            sender,
+            recs,
+            html_message=rendered_content,
+        )
+        print('Mail has been sent') 
+        
