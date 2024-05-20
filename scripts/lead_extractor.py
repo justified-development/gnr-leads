@@ -5,7 +5,11 @@ from leads.services.email_sender import EmailSender
 from django.conf import settings
 
 def run(*args):
-  yesterday = datetime.today() - timedelta(days=1)
+  currDays = 1
+  if len(args) > 0:
+    currDays = int(args[0])
+
+  yesterday = datetime.today() - timedelta(days=currDays)
   date_string = yesterday.strftime('%-m/%-d/%Y')
   if not settings.SKIP_SCRAPE == "true":
     leads: list[ScrapedLead] = Scraper.scrape(date_string)
