@@ -179,11 +179,24 @@ if IS_PROD:
     SKIP_SCRAPE = env('SKIP_SCRAPE')
 
     # Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django_psdb_engine',
+    #         'NAME': env('DB_NAME'),
+    #         'HOST': 'aws.connect.psdb.cloud',
+    #         'PORT': 3306,
+    #         'USER': env('DB_USER'),
+    #         'PASSWORD': env('DB_PASS'),
+    #         'OPTIONS': {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
+    #         # 'OPTIONS': {'ssl': {'ca': 'C:\\Users\\bwrig\\Desktop\\curl-ca-bundle.crt'}}
+    #     }
+    # }
+
     DATABASES = {
         'default': {
-            'ENGINE': 'django_psdb_engine',
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': env('DB_NAME'),
-            'HOST': 'aws.connect.psdb.cloud',
+            'HOST': 'bysf0aqjbawvorhlusqa-mysql.services.clever-cloud.com',
             'PORT': 3306,
             'USER': env('DB_USER'),
             'PASSWORD': env('DB_PASS'),
