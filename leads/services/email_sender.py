@@ -23,7 +23,10 @@ class EmailSender:
             print("Warning: multiple Message records. Just using the first.")
         message = messages[0]
 
-        rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": date})
+        extraMsg = f' (and {len(dates) - 1} extra days)' if len(dates) > 1 else ''
+
+        rendered_content = render_to_string('email.html', { "leads": leads, "prelude": message.prelude, "today": dates[0], 
+                                                           "extra": extraMsg})
 
         print("Recipients: " + str(recs))
         # print("Content: " + rendered_content)
