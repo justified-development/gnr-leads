@@ -16,10 +16,10 @@ def run(*args):
     currDaysArr = [int(currDays)]
 
   datetimes = []
-  if (len(args) < 2 or args[1] != "skip_scrape"):
-    for currDays in currDaysArr:
-      yesterday = datetime.today() - timedelta(days=currDays)
-      datetimes.append(yesterday)
+  for currDays in currDaysArr:
+    yesterday = datetime.today() - timedelta(days=currDays)
+    datetimes.append(yesterday)
+    if (len(args) < 2 or args[1] != "skip_scrape"):
       date_string = yesterday.strftime('%-m/%-d/%Y')
       if not settings.SKIP_SCRAPE == "true":
         leads: list[ScrapedLead] = Scraper.scrape(date_string)
