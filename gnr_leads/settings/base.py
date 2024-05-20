@@ -200,7 +200,7 @@ if IS_PROD:
             'PORT': 3306,
             'USER': env('DB_USER'),
             'PASSWORD': env('DB_PASS'),
-            'OPTIONS': {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
+            # 'OPTIONS': {'ssl': {'ca': '/etc/ssl/certs/ca-certificates.crt'}}
             # 'OPTIONS': {'ssl': {'ca': 'C:\\Users\\bwrig\\Desktop\\curl-ca-bundle.crt'}}
         }
     }
