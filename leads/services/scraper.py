@@ -9,6 +9,7 @@ from leads.models import Account
 from django.conf import settings
 from datetime import datetime
 from dateutil.parser import parse
+import os
 
 from leads.services.email_sender import EmailSender
 
@@ -74,7 +75,8 @@ class Scraper:
       driver.implicitly_wait(3)
       time.sleep(3)
 
-      driver.save_screenshot(f'/tmp/{account_name}{date}.png') 
+      print(os.getcwd())
+      driver.save_screenshot(f'/{os.getcwd()}/{account_name}{date}.png') 
 
       dates = [date]
       print(f'On Active Leads page, getting leads for these dates: {dates}')
