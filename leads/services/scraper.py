@@ -69,12 +69,22 @@ class Scraper:
       pass_field.send_keys(pw)
       pass_field.send_keys(Keys.RETURN)
 
-      print(f'{account_name} successfully logged in')
-
       time.sleep(15)
+
+      driver.get(Scraper.LOGIN)
+
+      username_field = driver.find_element(By.ID, 'username')
+      username_field.send_keys(username)
+      pass_field = driver.find_element(By.ID, 'password')
+      pass_field.send_keys(pw)
+      pass_field.send_keys(Keys.RETURN)
+
+      time.sleep(3)
 
       body = driver.find_element(By.TAG_NAME, 'body')
       print(body.get_attribute('innerHTML')[:3000])
+
+      print(f'{account_name} successfully logged in')
 
       driver.get(Scraper.LEADS)
       driver.implicitly_wait(3)
