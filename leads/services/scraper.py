@@ -74,7 +74,7 @@ class Scraper:
       body = driver.find_element(By.TAG_NAME, 'body')
       print(body.get_attribute('innerHTML')[:800])
 
-      time.sleep(3)
+      time.sleep(15)
 
       body = driver.find_element(By.TAG_NAME, 'body')
       print(body.get_attribute('innerHTML')[:800])
