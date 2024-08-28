@@ -76,7 +76,7 @@ class Scraper:
       time.sleep(3)
 
       print(os.getcwd())
-      driver.save_screenshot(f'/{os.getcwd()}/{account_name}{date}.png') 
+      driver.save_screenshot(f'{os.getcwd()}/{account_name}{date}.png') 
 
       dates = [date]
       print(f'On Active Leads page, getting leads for these dates: {dates}')
