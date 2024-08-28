@@ -1,3 +1,4 @@
+8/28/24 update
 Dev Tutorial:
 
 1. Ensure you are using Python 3.8 or higher
