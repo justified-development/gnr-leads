@@ -82,8 +82,8 @@ class Scraper:
 
       time.sleep(3)
 
-      body = driver.find_element(By.TAG_NAME, 'body')
-      print(body.get_attribute('innerHTML')[:3000])
+      body = driver.find_element(By.TAG_NAME, 'html')
+      print(body.get_attribute('innerHTML'))
 
       print(f'{account_name} successfully logged in')
 
