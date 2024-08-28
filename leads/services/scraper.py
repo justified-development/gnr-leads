@@ -74,6 +74,8 @@ class Scraper:
       driver.implicitly_wait(3)
       time.sleep(3)
 
+      driver.get_screenshot_as_file(f'/tmp/{account_name}{date}.png') 
+
       dates = [date]
       print(f'On Active Leads page, getting leads for these dates: {dates}')
       old_date_found = False
