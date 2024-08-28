@@ -46,9 +46,8 @@ class Scraper:
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
-    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument("--enable-javascript")
     chrome_options.binary_location = Scraper.GOOGLE_CHROME_PATH
 
     driver = webdriver.Chrome(executable_path=Scraper.CHROMEDRIVER_PATH, chrome_options=chrome_options)
@@ -70,20 +69,13 @@ class Scraper:
       pass_field.send_keys(pw)
       pass_field.send_keys(Keys.RETURN)
 
-      time.sleep(45)
-
-      body = driver.find_element(By.TAG_NAME, 'html')
-      print(body.get_attribute('innerHTML'))
+      time.sleep(3)
 
       print(f'{account_name} successfully logged in')
 
       driver.get(Scraper.LEADS)
       driver.implicitly_wait(3)
       time.sleep(3)
-
-      # get html body and print first 800 characters
-      body = driver.find_element(By.TAG_NAME, 'body')
-      print(body.get_attribute('innerHTML')[:800])
 
       dates = [date]
       print(f'On Active Leads page, getting leads for these dates: {dates}')
