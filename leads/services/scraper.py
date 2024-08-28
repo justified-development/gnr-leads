@@ -75,8 +75,9 @@ class Scraper:
       driver.implicitly_wait(3)
       time.sleep(3)
 
-      print(os.getcwd())
-      driver.save_screenshot(f'{os.getcwd()}/{account_name}{date}.png') 
+      # get html body and print first 800 characters
+      body = driver.find_element(By.TAG_NAME, 'body')
+      print(body.get_attribute('innerHTML')[:800])
 
       dates = [date]
       print(f'On Active Leads page, getting leads for these dates: {dates}')
