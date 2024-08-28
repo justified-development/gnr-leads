@@ -71,13 +71,10 @@ class Scraper:
 
       print(f'{account_name} successfully logged in')
 
-      body = driver.find_element(By.TAG_NAME, 'body')
-      print(body.get_attribute('innerHTML')[:800])
-
       time.sleep(15)
 
       body = driver.find_element(By.TAG_NAME, 'body')
-      print(body.get_attribute('innerHTML')[:800])
+      print(body.get_attribute('innerHTML')[:3000])
 
       driver.get(Scraper.LEADS)
       driver.implicitly_wait(3)
